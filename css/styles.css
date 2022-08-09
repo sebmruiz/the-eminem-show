@@ -1,28 +1,304 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
-
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: ;
-    list-style: none;
+:root {
+  --primary-color: #802922;
+  --secondary-color: #333;
+  --titles: #004040;
+  --text-color2: #4a4633;
+  --alternativo: #bfbe9c;
+  --border: 0.1rem solid rgba(255, 255, 255, 0.3);
+  /*  .color1 { #b8713d };
+.color2 { #ca9464 };
+.color3 { #55270c };
+.color4 { #905a55 };
+.color5 { #c7b3ad }; */
 }
 
-.container{
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    background: #3d4152;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  border: none;
+  text-decoration: none;
 }
-.navegation{
-    position: fixed;
-    inset: 20px 0 20px 20px;
-    width: 75px;
-    min-height: 500px;
-    background: #fff;
-    transition: 0.5s;
-    display: flex;
-    
+
+body {
+  background: rgb(20, 1, 1);
+}
+
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.9rem 3rem;
+  font-size: 0.8rem;
+  color: #fff;
+  background: var(--primary-color);
+  cursor: pointer;
+  border-radius: 2rem;
+}
+.heading {
+  text-align: center;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  padding-bottom: 3.5rem;
+  font-size: 4.5rem;
+}
+
+.container {
+  width: 100%;
+  /* min-height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navegation {
+  position: fixed;
+  inset: 20px 0 20px 20px;
+  width: 75px;
+  min-height: 500px;
+  background: var(--primary-color);
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navegation.open {
+  width: 250px;
+}
+.navegation .menu-toggle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+}
+.navegation .menu-toggle::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: var(--secondary-color);
+  transform: translateY(-8px);
+  transition: 0.5s;
+}
+.navegation.open .menu-toggle::before {
+  transform: translateY(0) rotate(45deg);
+}
+.navegation .menu-toggle::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background: var(--secondary-color);
+  transform: translateY(8px);
+  transition: 0.5s;
+  box-shadow: 0 -8px 0 #333;
+}
+.navegation.open .menu-toggle::after {
+  transform: translateY(0) rotate(-45deg);
+  box-shadow: none;
+}
+.navegation ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.navegation ul li {
+  list-style: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 10px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.navegation ul li.active {
+  transform: translateX(30px);
+}
+.navegation.open ul li.active {
+  transform: translateX(10px);
+}
+.navegation ul li a {
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+}
+.navegation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 55px;
+  height: 55px;
+  line-height: 60px;
+  color: var(--secondary-color);
+  border-radius: 10px;
+  font-size: 1.75rem;
+  transition: 0.5s;
+}
+.navegation ul li.active a .icon {
+  color: #fff;
+  background: var(--secondary-color);
+}
+.navegation ul li a .icon::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: var(--primary-color);
+  filter: blur(8px);
+  opacity: 0;
+  transition: 0.5s;
+}
+.navegation ul li a .icon::after {
+  opacity: 0.5;
+}
+.navegation ul li a .text {
+  position: relative;
+  padding: 0 15px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  color: var(--secondary-color);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+}
+.navegation.open ul li a .text {
+  opacity: 1;
+  visibility: visible;
+}
+.navegation ul li.active a .text {
+  color: var(--secondary-color);
+}
+
+/* ---------------home--------------- */
+section {
+  padding: 2rem 6%;
+}
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: url(../img/fondo.jpg) no-repeat;
+  background-position: center;
+  justify-content: center;
+  text-align: center;
+}
+.content h3 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  color: var(--titles);
+  text-align: center;
+  align-items: center;
+}
+.content p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--alternativo);
+  text-align: center;
+}
+
+/* ---------------historia--------------- */
+
+.historia .row {
+  display: flex;
+  align-items: center;
+  background: #333;
+  flex-wrap: wrap;
+  margin: 2rem;
+}
+.historia .row .image {
+}
+.historia .row .content {
+  flex: 1 1 45rem;
+  padding: 2rem;
+}
+
+/* ---------------listen--------------- */
+
+.listen iframe {
+  width: 100%;
+  height: 40rem;
+  margin: 2rem;
+}
+.lyrics .row {
+  display: flex;
+  align-items: center;
+  background: #333;
+  flex-wrap: wrap;
+  margin: 2rem;
+}
+.lyrics .content h3 {
+  font-size: 3rem;
+  text-align: left;
+}
+.lyrics .content p {
+  font-size: 1.2rem;
+  text-align: left;
+  padding: 1rem;
+}
+
+/* ---------------footer--------------- */
+
+.footer {
+  background: var(--secondary-color);
+  text-align: center;
+}
+.footer .share {
+  padding: 1rem 0;
+}
+.footer .share a {
+  height: 3rem;
+  width: 3rem;
+  line-height: 3rem;
+  font-size: 1.4rem;
+  color: #fff;
+  border: var(--border);
+  margin: 0.3rem;
+  border-radius: 50%;
+}
+.footer .share a:hover {
+  background-color: var(--primary-color);
+}
+.footer .links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  gap: 1rem;
+}
+.footer .links a {
+  padding: 0.7rem 2rem;
+  color: #fff;
+  border: var(--border);
+  font-size: 1.3rem;
+}
+.footer .links a:hover {
+  background: var(--primary-color);
+}
+.footer .credit {
+  font-size: 2rem;
+  color: #fff;
+  font-weight: lighter;
+  padding: 1.5rem;
+}
+.footer .credit span {
+  color: var(--primary-color);
 }
